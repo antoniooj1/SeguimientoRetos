@@ -42,7 +42,7 @@ cd android
 
 APK: `frontend/android/app/build/outputs/apk/debug/app-debug.apk`.
 
-En Android Studio, el proyecto usa `GRADLE_LOCAL_JAVA_HOME` y `.gradle/config.properties` apunta al JDK 21. Si se solicita seleccionar Gradle JDK, usa `/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home`.
+En Android Studio, el proyecto usa `GRADLE_LOCAL_JAVA_HOME` y `.gradle/config.properties` apunta al JDK 21. Si se solicita seleccionar Gradle JDK, usa `/Users/antoniojoseojeda/Library/Java/JavaVirtualMachines/jdk-21.0.13+9/Contents/Home`.
 
 ## Reproducir dependencias
 
