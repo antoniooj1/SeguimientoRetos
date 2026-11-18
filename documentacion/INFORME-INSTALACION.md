@@ -109,5 +109,9 @@ Es únicamente referencia. No se necesita todavía un servidor en el puerto 8000
 | 8 | Plantilla Angular standalone con botón Ionic funcionando en navegador. |
 | 9 | Android Studio, Java 21, SDK 36, herramientas y emulador API 36 configurados. |
 | 10 | Capacitor instalado, sincronización Android y APK de depuración verificadas. |
-| 11 | requirements.txt, package-lock.json y exclusiones de secretos preparados para registrar el entorno en Git. |
+| 11 | Entorno registrado en Git con requirements.txt, package-lock.json y secretos excluidos. |
 | 12 | Referencia revisada; no hay comandos pendientes en esta sección. |
+
+## Registro Git
+
+Commit de instalación: `a8c6ea1` — Prepara el entorno de desarrollo web y Android. Se comprobó que ningún archivo preparado contiene las contraseñas o SECRET_KEY locales.
