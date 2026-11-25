@@ -11,3 +11,6 @@ frontend/android/.gradle/
 frontend/android/local.properties
 **/build/
 .DS_Store
+
+frontend/android/.idea/
+evidencias/*.log
