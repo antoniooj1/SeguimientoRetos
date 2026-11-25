@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 import { urlApi } from './api.config';
-import { Avance, NuevoAvance, NuevoReto, Pagina, Reto, TareaSemanal } from './modelos';
+import { Avance, Microaccion, NuevoAvance, NuevoReto, Pagina, PlanRescate, Reto, TareaSemanal } from './modelos';
 
 /** Solo habla con el backend. No guarda estado: eso es tarea de SeguimientoService. */
 @Injectable({ providedIn: 'root' })
@@ -47,6 +47,22 @@ export class RetosApi {
 
   crearAvance(datos: NuevoAvance): Observable<Avance> {
     return this.http.post<Avance>(`${this.base}/avances/`, datos);
+  }
+
+  obtenerPlan(tarea: number): Observable<PlanRescate> {
+    return this.http.get<PlanRescate>(`${this.base}/tareas/${tarea}/plan-rescate/`);
+  }
+
+  crearMicroaccion(datos: Pick<Microaccion, 'tarea' | 'titulo' | 'fecha_objetivo' | 'minutos_estimados'>): Observable<Microaccion> {
+    return this.http.post<Microaccion>(`${this.base}/microacciones/`, datos);
+  }
+
+  completarMicroaccion(id: number, completada: boolean): Observable<Microaccion> {
+    return this.http.patch<Microaccion>(`${this.base}/microacciones/${id}/`, { completada });
+  }
+
+  eliminarMicroaccion(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.base}/microacciones/${id}/`);
   }
 }
 

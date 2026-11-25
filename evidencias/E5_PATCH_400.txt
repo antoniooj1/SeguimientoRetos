@@ -1,0 +1,13 @@
+HTTP/1.1 400 Bad Request
+Date: Wed, 25 Nov 2026 15:45:29 GMT
+Server: WSGIServer/0.2 CPython/3.12.16
+Content-Type: application/json
+Vary: Accept, Cookie, origin
+Allow: GET, PUT, PATCH, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 77
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+Cross-Origin-Opener-Policy: same-origin
+
+{"non_field_errors":["La semana 7 ya está cerrada; no se puede modificar."]}

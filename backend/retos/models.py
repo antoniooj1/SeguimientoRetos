@@ -68,3 +68,24 @@ class TareaSemanal(models.Model):
 
     def __str__(self):
         return f'{self.reto} - semana {self.semana}'
+
+
+class Microaccion(models.Model):
+    """Pequeña acción planificada para recuperar una semana en curso."""
+
+    tarea = models.ForeignKey(TareaSemanal, on_delete=models.CASCADE, related_name='microacciones')
+    titulo = models.CharField(max_length=160)
+    fecha_objetivo = models.DateField()
+    minutos_estimados = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(240)]
+    )
+    completada = models.BooleanField(default=False)
+    creado = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['fecha_objetivo', 'id']
+        verbose_name = 'microacción'
+        verbose_name_plural = 'microacciones'
+
+    def __str__(self):
+        return self.titulo

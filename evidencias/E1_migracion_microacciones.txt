@@ -1,0 +1,7 @@
+Migrations for 'retos':
+  backend/retos/migrations/0003_microaccion.py
+    + Create model Microaccion
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, retos, sessions
+Running migrations:
+  Applying retos.0003_microaccion... OK

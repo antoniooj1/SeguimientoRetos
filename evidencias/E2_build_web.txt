@@ -1,0 +1,44 @@
+
+> frontend@0.0.0 build
+> ng build
+
+❯ Building...
+✔ Building...
+Initial chunk files | Names             |  Raw size | Estimated transfer size
+main-LFKRQ7EF.js    | main              |   1.12 MB |               192.72 kB
+chunk-BxmVvyFt.js   | -                 |  39.28 kB |                13.51 kB
+styles-3K57INKN.css | styles            |  13.85 kB |                 2.89 kB
+chunk-CXcmPkLb.js   | -                 |   9.20 kB |                 3.37 kB
+chunk-DtUSP2R6.js   | -                 |   5.69 kB |                 2.10 kB
+chunk-6T7pzx8v.js   | -                 |   3.56 kB |                 1.39 kB
+chunk-BSRJNx83.js   | -                 |   1.08 kB |               478 bytes
+chunk-BPKjz2We.js   | -                 |   1.06 kB |               480 bytes
+chunk-vszCo2Q1.js   | -                 |   1.05 kB |               556 bytes
+chunk-DEQTwfN6.js   | -                 | 731 bytes |               731 bytes
+chunk-CABSGZFi.js   | -                 | 555 bytes |               555 bytes
+chunk-D9AI81tR.js   | -                 | 102 bytes |               102 bytes
+
+                    | Initial total     |   1.19 MB |               218.89 kB
+
+Lazy chunk files    | Names             |  Raw size | Estimated transfer size
+chunk-CMq0pRqR.js   | plan-rescate-page |   8.17 kB |                 3.04 kB
+chunk-mXxAPpSm.js   | reto-detalle-page |   7.76 kB |                 2.87 kB
+chunk-DTClE-rt.js   | -                 |   5.36 kB |                 2.28 kB
+chunk-CJb2xf_i.js   | ion-icon-entry    |   4.92 kB |                 1.81 kB
+chunk-BfzRX_HI.js   | p-CGPlqk2U        |   4.91 kB |                 1.97 kB
+chunk-D0SaqUOL.js   | retos-lista-page  |   4.16 kB |                 1.74 kB
+chunk-6veO7aqI.js   | reto-form-page    |   3.69 kB |                 1.56 kB
+chunk-CHLkJzjm.js   | alertas-page      |   2.64 kB |                 1.11 kB
+chunk-Dejc4zdX.js   | p-BAId-lif        |   1.64 kB |               759 bytes
+chunk-1WgjXSTw.js   | p-BmVRXR1y        | 933 bytes |               933 bytes
+chunk-DI4Iid2j.js   | p-CvJCRpUX        | 642 bytes |               642 bytes
+chunk-D7ivcIFV.js   | p-BjZLJLiN        | 483 bytes |               483 bytes
+chunk-D64otnhK.js   | p-D7-vHX0A        | 164 bytes |               164 bytes
+chunk-AzughbCo.js   | p-Cu22S_Bl        | 162 bytes |               162 bytes
+chunk-BLafXiw8.js   | p-BbKlaMtT        | 138 bytes |               138 bytes
+...and 3 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [2.177 seconds] - 2026-11-25T15:42:11.106Z
+
+Output location: /Users/antoniojoseojeda/Proyectos/SeguimientoRetos/frontend/dist/frontend
+

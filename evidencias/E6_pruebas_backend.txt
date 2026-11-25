@@ -1,0 +1,49 @@
+Creating test database for alias 'default' ('test_seguimiento_retos')...
+Found 12 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: corsheaders, django_filters, drf_spectacular, messages, rest_framework, staticfiles
+  Apply all migrations: admin, auth, contenttypes, retos, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying retos.0001_initial... OK
+  Applying retos.0002_tareasemanal... OK
+  Applying retos.0003_microaccion... OK
+  Applying sessions.0001_initial...test_crear_completar_y_consultar_no_inventa_avance (retos.tests.PlanRescateTests.test_crear_completar_y_consultar_no_inventa_avance) ... ok
+test_meta_diaria_incluye_hoy (retos.tests.PlanRescateTests.test_meta_diaria_incluye_hoy) ... ok
+test_no_mover_una_accion_a_otra_semana (retos.tests.PlanRescateTests.test_no_mover_una_accion_a_otra_semana) ... ok
+test_no_planificar_una_semana_futura (retos.tests.PlanRescateTests.test_no_planificar_una_semana_futura) ... ok
+test_rechaza_fecha_fuera_de_la_semana (retos.tests.PlanRescateTests.test_rechaza_fecha_fuera_de_la_semana) ... ok
+test_rechaza_minutos_invalidos (retos.tests.PlanRescateTests.test_rechaza_minutos_invalidos) ... ok
+test_semana_cerrada_bloquea_creacion_edicion_y_borrado (retos.tests.PlanRescateTests.test_semana_cerrada_bloquea_creacion_edicion_y_borrado) ... ok
+test_crear_y_listar_reto (retos.tests.RetoApiTests.test_crear_y_listar_reto) ... ok
+test_rechaza_fecha_fin_anterior_a_inicio (retos.tests.RetoApiTests.test_rechaza_fecha_fin_anterior_a_inicio) ... ok
+test_rechaza_porcentaje_mayor_a_100 (retos.tests.RetoApiTests.test_rechaza_porcentaje_mayor_a_100) ... ok
+test_crear_reto_genera_semanas_7_a_15 (retos.tests.TareaSemanalTests.test_crear_reto_genera_semanas_7_a_15) ... ok
+test_semana_cerrada_no_se_puede_modificar (retos.tests.TareaSemanalTests.test_semana_cerrada_no_se_puede_modificar) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.087s
+
+OK
+Destroying test database for alias 'default' ('test_seguimiento_retos')...
+ OK
+System check identified no issues (0 silenced).

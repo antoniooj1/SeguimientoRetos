@@ -1,10 +1,12 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .models import Avance, Reto, TareaSemanal
+from .models import Avance, Microaccion, Reto, TareaSemanal
+from .plan_rescate import exigir_semana_abierta, resumir_plan
 from .semanas import crear_tareas_semanales
-from .serializers import AvanceSerializer, RetoSerializer, TareaSemanalSerializer
+from .serializers import AvanceSerializer, MicroaccionSerializer, PlanRescateSerializer, RetoSerializer, TareaSemanalSerializer
 
 
 class RetoViewSet(viewsets.ModelViewSet):
@@ -49,3 +51,22 @@ class TareaSemanalViewSet(
     filterset_fields = ['reto', 'semana']
     ordering_fields = ['semana']
     pagination_class = None
+
+    @extend_schema(responses=PlanRescateSerializer)
+    @action(detail=True, methods=['get'], url_path='plan-rescate')
+    def plan_rescate(self, request, pk=None):
+        """Meta diaria sugerida y lista persistente de microacciones de la semana."""
+        return Response(PlanRescateSerializer(resumir_plan(self.get_object())).data)
+
+
+class MicroaccionViewSet(viewsets.ModelViewSet):
+    """Planificar, editar, completar o eliminar acciones únicamente en semanas abiertas."""
+
+    queryset = Microaccion.objects.select_related('tarea', 'tarea__reto')
+    serializer_class = MicroaccionSerializer
+    filterset_fields = ['tarea', 'completada']
+    pagination_class = None
+
+    def perform_destroy(self, instance):
+        exigir_semana_abierta(instance.tarea)
+        instance.delete()

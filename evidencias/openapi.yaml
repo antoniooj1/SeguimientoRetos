@@ -1,0 +1,1288 @@
+openapi: 3.0.3
+info:
+  title: API Seguimiento de Retos
+  version: 1.0.0
+  description: Backend Django REST del proyecto Seguimiento de Retos.
+paths:
+  /api/avances/:
+    get:
+      operationId: avances_list
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Qué campo usar para ordenar los resultados.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - in: query
+        name: reto
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: Un término de búsqueda.
+        schema:
+          type: string
+      tags:
+      - avances
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedAvanceList'
+          description: ''
+    post:
+      operationId: avances_create
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      tags:
+      - avances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Avance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Avance'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avance'
+          description: ''
+  /api/avances/{id}/:
+    get:
+      operationId: avances_retrieve
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este avance.
+        required: true
+      tags:
+      - avances
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avance'
+          description: ''
+    put:
+      operationId: avances_update
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este avance.
+        required: true
+      tags:
+      - avances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Avance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Avance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Avance'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avance'
+          description: ''
+    patch:
+      operationId: avances_partial_update
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este avance.
+        required: true
+      tags:
+      - avances
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAvance'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAvance'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAvance'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Avance'
+          description: ''
+    delete:
+      operationId: avances_destroy
+      description: Listar, crear, consultar, modificar y eliminar avances.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este avance.
+        required: true
+      tags:
+      - avances
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/microacciones/:
+    get:
+      operationId: microacciones_list
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      parameters:
+      - in: query
+        name: completada
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Qué campo usar para ordenar los resultados.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: Un término de búsqueda.
+        schema:
+          type: string
+      - in: query
+        name: tarea
+        schema:
+          type: integer
+      tags:
+      - microacciones
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Microaccion'
+          description: ''
+    post:
+      operationId: microacciones_create
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      tags:
+      - microacciones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microaccion'
+          description: ''
+  /api/microacciones/{id}/:
+    get:
+      operationId: microacciones_retrieve
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este microacción.
+        required: true
+      tags:
+      - microacciones
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microaccion'
+          description: ''
+    put:
+      operationId: microacciones_update
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este microacción.
+        required: true
+      tags:
+      - microacciones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Microaccion'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microaccion'
+          description: ''
+    patch:
+      operationId: microacciones_partial_update
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este microacción.
+        required: true
+      tags:
+      - microacciones
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMicroaccion'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMicroaccion'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMicroaccion'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microaccion'
+          description: ''
+    delete:
+      operationId: microacciones_destroy
+      description: Planificar, editar, completar o eliminar acciones únicamente en
+        semanas abiertas.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este microacción.
+        required: true
+      tags:
+      - microacciones
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/retos/:
+    get:
+      operationId: retos_list
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      parameters:
+      - in: query
+        name: estado
+        schema:
+          type: string
+          enum:
+          - COMPLETADO
+          - EN_CURSO
+          - PENDIENTE
+        description: |-
+          * `PENDIENTE` - Pendiente
+          * `EN_CURSO` - En curso
+          * `COMPLETADO` - Completado
+      - name: ordering
+        required: false
+        in: query
+        description: Qué campo usar para ordenar los resultados.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: Un número de página dentro del conjunto de resultados paginado.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: Un término de búsqueda.
+        schema:
+          type: string
+      tags:
+      - retos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRetoList'
+          description: ''
+    post:
+      operationId: retos_create
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      tags:
+      - retos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reto'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reto'
+          description: ''
+  /api/retos/{id}/:
+    get:
+      operationId: retos_retrieve
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este reto.
+        required: true
+      tags:
+      - retos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reto'
+          description: ''
+    put:
+      operationId: retos_update
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este reto.
+        required: true
+      tags:
+      - retos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reto'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reto'
+          description: ''
+    patch:
+      operationId: retos_partial_update
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este reto.
+        required: true
+      tags:
+      - retos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReto'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reto'
+          description: ''
+    delete:
+      operationId: retos_destroy
+      description: Listar, crear, consultar, modificar y eliminar retos.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este reto.
+        required: true
+      tags:
+      - retos
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/retos/{id}/generar-semanas/:
+    post:
+      operationId: retos_generar_semanas_create
+      description: Crea las semanas que falten (útil para retos creados antes de esta
+        guía).
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este reto.
+        required: true
+      tags:
+      - retos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Reto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Reto'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reto'
+          description: ''
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/tareas/:
+    get:
+      operationId: tareas_list
+      description: Consultar y actualizar tareas semanales. Se crean solas; no se
+        borran.
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Qué campo usar para ordenar los resultados.
+        schema:
+          type: string
+      - in: query
+        name: reto
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: Un término de búsqueda.
+        schema:
+          type: string
+      - in: query
+        name: semana
+        schema:
+          type: integer
+      tags:
+      - tareas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TareaSemanal'
+          description: ''
+  /api/tareas/{id}/:
+    get:
+      operationId: tareas_retrieve
+      description: Consultar y actualizar tareas semanales. Se crean solas; no se
+        borran.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este tarea semanal.
+        required: true
+      tags:
+      - tareas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TareaSemanal'
+          description: ''
+    put:
+      operationId: tareas_update
+      description: Consultar y actualizar tareas semanales. Se crean solas; no se
+        borran.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este tarea semanal.
+        required: true
+      tags:
+      - tareas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TareaSemanal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TareaSemanal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TareaSemanal'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TareaSemanal'
+          description: ''
+    patch:
+      operationId: tareas_partial_update
+      description: Consultar y actualizar tareas semanales. Se crean solas; no se
+        borran.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este tarea semanal.
+        required: true
+      tags:
+      - tareas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTareaSemanal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTareaSemanal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTareaSemanal'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TareaSemanal'
+          description: ''
+  /api/tareas/{id}/plan-rescate/:
+    get:
+      operationId: tareas_plan_rescate_retrieve
+      description: Meta diaria sugerida y lista persistente de microacciones de la
+        semana.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: Un valor de entero único que identifique este tarea semanal.
+        required: true
+      tags:
+      - tareas
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanRescate'
+          description: ''
+components:
+  schemas:
+    Avance:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reto:
+          type: integer
+        fecha:
+          type: string
+          format: date
+        descripcion:
+          type: string
+          maxLength: 255
+        porcentaje:
+          type: integer
+          maximum: 100
+          minimum: 0
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - creado
+      - descripcion
+      - fecha
+      - id
+      - porcentaje
+      - reto
+    EstadoEnum:
+      enum:
+      - PENDIENTE
+      - EN_CURSO
+      - COMPLETADO
+      type: string
+      description: |-
+        * `PENDIENTE` - Pendiente
+        * `EN_CURSO` - En curso
+        * `COMPLETADO` - Completado
+    Microaccion:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tarea:
+          type: integer
+        titulo:
+          type: string
+          maxLength: 160
+        fecha_objetivo:
+          type: string
+          format: date
+        minutos_estimados:
+          type: integer
+          maximum: 240
+          minimum: 1
+        completada:
+          type: boolean
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+        vencida:
+          type: boolean
+          readOnly: true
+      required:
+      - creado
+      - fecha_objetivo
+      - id
+      - minutos_estimados
+      - tarea
+      - titulo
+      - vencida
+    PaginatedAvanceList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Avance'
+    PaginatedRetoList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reto'
+    PatchedAvance:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reto:
+          type: integer
+        fecha:
+          type: string
+          format: date
+        descripcion:
+          type: string
+          maxLength: 255
+        porcentaje:
+          type: integer
+          maximum: 100
+          minimum: 0
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedMicroaccion:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        tarea:
+          type: integer
+        titulo:
+          type: string
+          maxLength: 160
+        fecha_objetivo:
+          type: string
+          format: date
+        minutos_estimados:
+          type: integer
+          maximum: 240
+          minimum: 1
+        completada:
+          type: boolean
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+        vencida:
+          type: boolean
+          readOnly: true
+    PatchedReto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 150
+        descripcion:
+          type: string
+        fecha_inicio:
+          type: string
+          format: date
+        fecha_fin:
+          type: string
+          format: date
+          nullable: true
+        estado:
+          $ref: '#/components/schemas/EstadoEnum'
+        total_avances:
+          type: integer
+          readOnly: true
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+    PatchedTareaSemanal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reto:
+          type: integer
+          readOnly: true
+        reto_titulo:
+          type: string
+          readOnly: true
+        semana:
+          type: integer
+          readOnly: true
+        fecha_inicio:
+          type: string
+          format: date
+          readOnly: true
+        fecha_fin:
+          type: string
+          format: date
+          readOnly: true
+        descripcion:
+          type: string
+          maxLength: 255
+        porcentaje:
+          type: integer
+          maximum: 100
+          minimum: 0
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+    PlanRescate:
+      type: object
+      properties:
+        tarea:
+          type: integer
+        reto:
+          type: integer
+        reto_titulo:
+          type: string
+        semana:
+          type: integer
+        hoy:
+          type: string
+          format: date
+        fecha_fin:
+          type: string
+          format: date
+        editable:
+          type: boolean
+        porcentaje:
+          type: integer
+        faltante:
+          type: integer
+        dias_restantes:
+          type: integer
+        meta_diaria:
+          type: integer
+          nullable: true
+        total_acciones:
+          type: integer
+        completadas:
+          type: integer
+        progreso_acciones:
+          type: integer
+        minutos_pendientes:
+          type: integer
+        vencidas:
+          type: integer
+        acciones:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microaccion'
+      required:
+      - acciones
+      - completadas
+      - dias_restantes
+      - editable
+      - faltante
+      - fecha_fin
+      - hoy
+      - meta_diaria
+      - minutos_pendientes
+      - porcentaje
+      - progreso_acciones
+      - reto
+      - reto_titulo
+      - semana
+      - tarea
+      - total_acciones
+      - vencidas
+    Reto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        titulo:
+          type: string
+          maxLength: 150
+        descripcion:
+          type: string
+        fecha_inicio:
+          type: string
+          format: date
+        fecha_fin:
+          type: string
+          format: date
+          nullable: true
+        estado:
+          $ref: '#/components/schemas/EstadoEnum'
+        total_avances:
+          type: integer
+          readOnly: true
+        creado:
+          type: string
+          format: date-time
+          readOnly: true
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - actualizado
+      - creado
+      - fecha_inicio
+      - id
+      - titulo
+      - total_avances
+    TareaSemanal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reto:
+          type: integer
+          readOnly: true
+        reto_titulo:
+          type: string
+          readOnly: true
+        semana:
+          type: integer
+          readOnly: true
+        fecha_inicio:
+          type: string
+          format: date
+          readOnly: true
+        fecha_fin:
+          type: string
+          format: date
+          readOnly: true
+        descripcion:
+          type: string
+          maxLength: 255
+        porcentaje:
+          type: integer
+          maximum: 100
+          minimum: 0
+        actualizado:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - actualizado
+      - fecha_fin
+      - fecha_inicio
+      - id
+      - reto
+      - reto_titulo
+      - semana
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

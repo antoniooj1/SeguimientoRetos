@@ -1,0 +1,17 @@
+
+> frontend@0.0.0 test
+> ng test --watch=false
+
+❯ Building...
+✔ Building...
+Application bundle generation complete. [0.340 seconds] - 2026-11-25T15:42:11.869Z
+
+
+ RUN  v5.1.1 /Users/antoniojoseojeda/Proyectos/SeguimientoRetos/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  10:42:12
+   Duration  515ms (environment 76%, setup 17%, transform 5%, worker 1%, tests 1%)
+

@@ -56,3 +56,34 @@ export interface Pagina<T> {
   previous: string | null;
   results: T[];
 }
+
+export interface Microaccion {
+  id: number;
+  tarea: number;
+  titulo: string;
+  fecha_objetivo: string;
+  minutos_estimados: number;
+  completada: boolean;
+  vencida: boolean;
+  creado: string;
+}
+
+export interface PlanRescate {
+  tarea: number;
+  reto: number;
+  reto_titulo: string;
+  semana: number;
+  hoy: string;
+  fecha_fin: string;
+  editable: boolean;
+  porcentaje: number;
+  faltante: number;
+  dias_restantes: number;
+  meta_diaria: number | null;
+  total_acciones: number;
+  completadas: number;
+  progreso_acciones: number;
+  minutos_pendientes: number;
+  vencidas: number;
+  acciones: Microaccion[];
+}

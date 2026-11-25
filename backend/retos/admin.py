@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import Avance, Reto, TareaSemanal
+from .models import Avance, Microaccion, Reto, TareaSemanal
+
+
+@admin.register(Microaccion)
+class MicroaccionAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'tarea', 'fecha_objetivo', 'minutos_estimados', 'completada')
+    list_filter = ('completada', 'fecha_objetivo')
+    search_fields = ('titulo', 'tarea__reto__titulo')
 
 
 class AvanceInline(admin.TabularInline):

@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   IonBackButton,
   IonBadge,
@@ -45,13 +45,13 @@ import { SeguimientoService } from '../core/seguimiento.service';
 @Component({
   selector: 'app-reto-detalle',
   imports: [
-    AsyncPipe, ReactiveFormsModule, IonBackButton, IonBadge, IonButton, IonButtons, IonCard,
+    AsyncPipe, ReactiveFormsModule, RouterLink, IonBackButton, IonBadge, IonButton, IonButtons, IonCard,
     IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader,
     IonInput, IonItem, IonLabel, IonList, IonNote, IonProgressBar, IonRange, IonSegment,
     IonSegmentButton, IonText, IonTitle, IonToolbar,
   ],
   styles: `
-    .semana-actual { --background: var(--ion-color-primary-tint); }
+    .semana-actual { --background: #eef4ff; }
     ion-progress-bar { margin-top: 6px; }
   `,
   template: `
@@ -120,6 +120,9 @@ import { SeguimientoService } from '../core/seguimiento.service';
                       <p>Riesgo: si no avanzas, esta semana se cerrará en rojo.</p>
                     </ion-text>
                   }
+                  <ion-button size="small" fill="outline" [routerLink]="['/semanas', s.id, 'plan']">
+                    {{ s.editable ? 'Organizar mi plan de rescate' : 'Consultar plan de la semana' }}
+                  </ion-button>
                 </ion-label>
               </ion-item>
             }

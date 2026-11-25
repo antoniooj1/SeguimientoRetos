@@ -3,6 +3,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   { path: '', redirectTo: 'retos', pathMatch: 'full' },
   {
+    path: 'semanas/:id/plan',
+    loadComponent: () => import('./paginas/plan-rescate.page').then((m) => m.PlanRescatePage),
+  },
+  {
     path: 'retos',
     loadComponent: () => import('./paginas/retos-lista.page').then((m) => m.RetosListaPage),
   },
