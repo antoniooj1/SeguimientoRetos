@@ -1,5 +1,10 @@
 # Seguimiento de Retos
 
+> **Entrega parcial B1 · Antonio José Ojeda Jaramillo**
+> - 📄 Informe con las Evidencias 1 a 5 y la funcionalidad propia: [documentacion/Informe_Evidencias_SeguimientoRetos.pdf](documentacion/Informe_Evidencias_SeguimientoRetos.pdf)
+> - 🗂️ Registros y capturas originales: [evidencias/](evidencias/README.md)
+> - ⭐ Funcionalidad propia: plan de rescate semanal (ver la sección más abajo)
+
 Aplicación de las guías 02, 03 y 04: Django 5.2 + DRF + MySQL 8.4, Angular 22 + Ionic 9 y Capacitor 8.
 
 ## Iniciar en macOS
