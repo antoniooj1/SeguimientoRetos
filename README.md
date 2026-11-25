@@ -4,7 +4,7 @@ Aplicación de las guías 02, 03 y 04: Django 5.2 + DRF + MySQL 8.4, Angular 22 
 
 ## Iniciar en macOS
 
-Desde la raíz, en dos terminales:
+En VS Code: Quick Access → **Run Task** → **Iniciar todo (Seguimiento Retos)** arranca MySQL, el backend y el frontend. También puedes hacerlo desde la raíz, en dos terminales:
 
 ```sh
 ./scripts/iniciar-backend.sh
@@ -21,6 +21,10 @@ Desde la raíz, en dos terminales:
 - Android: http://10.0.2.2:8000/api/
 
 El backend escucha en 8000 y MySQL mantiene 3307. Detén cualquier otro servidor que ocupe esos puertos antes de iniciar.
+
+## Informe de evidencias
+
+Documento único con las Evidencias 1 a 5 y la funcionalidad propia: [documentacion/Informe_Evidencias_SeguimientoRetos.pdf](documentacion/Informe_Evidencias_SeguimientoRetos.pdf) (también en [Word](documentacion/Informe_Evidencias_SeguimientoRetos.docx)).
 
 ## Estructura
 

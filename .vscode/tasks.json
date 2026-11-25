@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "1 MySQL (3307)",
+      "type": "shell",
+      "command": "./scripts/iniciar-mysql.sh",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "group": "retos" }
+    },
+    {
+      "label": "2 Backend Django (8000)",
+      "type": "shell",
+      "command": "sleep 4 && ./scripts/iniciar-backend.sh",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "group": "retos" }
+    },
+    {
+      "label": "3 Frontend Ionic (8100)",
+      "type": "shell",
+      "command": "cd frontend && if command -v ionic >/dev/null; then ionic serve --project=frontend --port=8100 --no-open; else npx ng serve --port 8100; fi",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "panel": "dedicated", "group": "retos" }
+    },
+    {
+      "label": "Iniciar todo (Seguimiento Retos)",
+      "dependsOn": ["1 MySQL (3307)", "2 Backend Django (8000)", "3 Frontend Ionic (8100)"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

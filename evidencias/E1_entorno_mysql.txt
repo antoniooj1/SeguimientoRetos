@@ -1,0 +1,6 @@
+Python: 3.12.16 | Bits: 64
+Entorno: /Users/antoniojoseojeda/Proyectos/SeguimientoRetos/backend/.venv/bin/python
+Django: 5.2.19
+Servidor, puerto, base y usuario: ('8.4.13', 3307, 'seguimiento_retos', 'retos_app@127.0.0.1')
+Tablas: 14
+OK: conexión Python–MySQL
